@@ -1,6 +1,5 @@
-// ignore_for_file: avoid_print
 
-import 'dart:io';
+// ignore_for_file: avoid_print
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -53,39 +52,6 @@ class AppBody extends StatefulWidget {
 }
 
 class _AppBodyState extends State<AppBody> {
-  // Location location = Location();
-  // late bool _serviceEnabled;
-
-  // late PermissionStatus _permissionGranted;
-
-  // LocationData? _userLocation;
-
-  // // This function will get user location
-  // Future<void> _getUserLocation() async {
-  //   // Check if location service is enable
-  //   _serviceEnabled = await location.serviceEnabled();
-  //   if (!_serviceEnabled) {
-  //     _serviceEnabled = await location.requestService();
-  //     if (!_serviceEnabled) {
-  //       return;
-  //     }
-  //   }
-
-  //   // Check if permission is granted
-  //   _permissionGranted = await location.hasPermission();
-  //   if (_permissionGranted == PermissionStatus.denied) {
-  //     _permissionGranted = await location.requestPermission();
-  //     if (_permissionGranted != PermissionStatus.granted) {
-  //       return;
-  //     }
-  //   }
-  //   LocationData locationData = await location.getLocation();
-
-  //   print(locationData);
-  //   setState(() {
-  //     _userLocation = locationData;
-  //   });
-  // }
   String? lat;
   String? long;
   Future<Position> _getCurrentLocation() async {
@@ -153,8 +119,6 @@ class _AppBodyState extends State<AppBody> {
                     long = '${value.longitude}';
                   });
                   setState(() {
-                    //_getUserLocation();
-                    // if (_userLocation != null) {
                     DatabaseReference userID =
                         FirebaseDatabase.instance.ref().child(_controller1.text.toString()).child("User Id");
                     userID.set(_controller1.text.toString());
@@ -169,9 +133,6 @@ class _AppBodyState extends State<AppBody> {
                     longitude.set(long);
                   });
                   _liveLocation();
-                  // } else {
-                  //   print("NOTTTTTTT");
-                  // }
                 },
                 child: const Icon(Icons.arrow_right_rounded))
           ],
